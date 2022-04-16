@@ -1,11 +1,16 @@
 #include<stdio.h>
 #include<stdbool.h>
 #include<string.h>
+#include<ctype.h>
 #define MAX_LIMIT 100
+
+// function declaration
+char* caesar(char* input, int shift);
 
 int main() {
 
     // greeting message
+    printf("\n\n\n");
     printf("#####################################\n");
     printf("##      Command-Line ENCRYPTER     ##\n");
     printf("## Copyright Dominik Hoffmann 2022 ##\n");
@@ -30,12 +35,23 @@ int main() {
         // terminate programm --> "q" was chosen
         if(strcmp(choice, "q") == 10){
             printf("Goodbye! And see you soon!\n");
+            printf("\n");
             return 0;
         }
         // encrypt word
         else if (strcmp(choice, "e") == 10)
         {
             printf("Encrypt word\n");
+
+            // prompt for to be encrypted word
+            char plain[MAX_LIMIT];
+            printf("Plain text: ");
+            fgets(plain, MAX_LIMIT, stdin);
+
+            printf("Encrypted text: %s\n", caesar(plain, 5));
+            printf("\n");
+            
+
             return 0;
         }
         else{
@@ -43,13 +59,28 @@ int main() {
         }
         
     } while (true);
-    
-    
 
-    
-
-    
-    
-    
-    
 }
+
+
+
+
+// 
+char* caesar(char* input, int shift){
+    
+    for(int i = 0; i < strlen(input) - 1; i++){
+        char current = input[i];
+        if(isupper(current)){
+            input[i] = (current + shift - 65) % 26 + 65;
+        } 
+        else{
+            input[i] = (current + shift - 97) % 26 + 97;
+        }
+    }
+
+    return input;
+}
+
+
+
+
