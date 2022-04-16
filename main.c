@@ -65,7 +65,7 @@ int main() {
 
 
 
-// 
+// encrypts given string with n-shift caesar's cipher 
 char* caesar(char* input, int shift){
     
     for(int i = 0; i < strlen(input) - 1; i++){
