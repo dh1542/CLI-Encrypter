@@ -46,21 +46,34 @@ int main() {
             char cipher[MAX_LIMIT];
             printf("Cipher: ");
             fgets(cipher, MAX_LIMIT, stdin);
-            printf("%s\n", cipher);
-
             
-
 
             // prompt for to be encrypted word
             char plain[MAX_LIMIT];
             printf("Plain text: ");
             fgets(plain, MAX_LIMIT, stdin);
 
-            printf("Encrypted text: %s\n", caesar(plain, 13));
-            printf("\n");
-            
 
-            return 0;
+            if(strcmp(cipher, "caesar") == 10){
+                int shift;
+                printf("Number of shifts for caesar's cipher: ");
+                scanf("%d/n", &shift);
+                
+                printf("Encrypted text: %s\n", caesar(plain, shift));
+                printf("\n");
+            }
+            else if(strcmp(cipher, "vigenere") == 10){
+                // get key word
+                char key[MAX_LIMIT];
+                printf("Key-Word: ");
+                fgets(key, MAX_LIMIT, stdin);
+                
+                printf("Encrypted text: %s\n", vigenere(cipher, key));
+                printf("\n");
+
+            }
+
+            
         }
         // invalid input
         else{

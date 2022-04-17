@@ -19,3 +19,18 @@ char* caesar(char* input, int shift){
 
     return input;
 }
+
+// encrypts given string with key-word in vigneres cipher
+char* vigenere(char* plain, char* key){
+
+    int key_index = 0;
+    for(int i = 0; i < strlen(plain) - 1; i++){
+        plain[i] = ((plain[i] + key[key_index]) % 26) + 'A';
+        key_index++;
+        if(key_index >= strlen(key)){
+            key_index = 0;
+        }
+    }
+
+    return plain;
+}
