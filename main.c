@@ -2,10 +2,10 @@
 #include<stdbool.h>
 #include<string.h>
 #include<ctype.h>
+#include "encryption.h"
 #define MAX_LIMIT 100
 
-// function declaration
-char* caesar(char* input, int shift);
+
 
 int main() {
 
@@ -39,21 +39,30 @@ int main() {
             return 0;
         }
         // encrypt word
-        else if (strcmp(choice, "e") == 10)
-        {
+        else if (strcmp(choice, "e") == 10){
             printf("Encrypt word\n");
+
+            // choose cipher
+            char cipher[MAX_LIMIT];
+            printf("Cipher: ");
+            fgets(cipher, MAX_LIMIT, stdin);
+            printf("%s\n", cipher);
+
+            
+
 
             // prompt for to be encrypted word
             char plain[MAX_LIMIT];
             printf("Plain text: ");
             fgets(plain, MAX_LIMIT, stdin);
 
-            printf("Encrypted text: %s\n", caesar(plain, 5));
+            printf("Encrypted text: %s\n", caesar(plain, 13));
             printf("\n");
             
 
             return 0;
         }
+        // invalid input
         else{
             printf("Invalid input. I don't understand: %s\n", choice);
         }
@@ -65,21 +74,6 @@ int main() {
 
 
 
-// encrypts given string with n-shift caesar's cipher 
-char* caesar(char* input, int shift){
-    
-    for(int i = 0; i < strlen(input) - 1; i++){
-        char current = input[i];
-        if(isupper(current)){
-            input[i] = (current + shift - 65) % 26 + 65;
-        } 
-        else{
-            input[i] = (current + shift - 97) % 26 + 97;
-        }
-    }
-
-    return input;
-}
 
 
 
