@@ -40,38 +40,60 @@ int main() {
         }
         // encrypt word
         else if (strcmp(choice, "e") == 10){
-            printf("Encrypt word\n");
-
-            // choose cipher
-            char cipher[MAX_LIMIT];
-            printf("Cipher: ");
-            fgets(cipher, MAX_LIMIT, stdin);
+            
             
 
-            // prompt for to be encrypted word
-            char plain[MAX_LIMIT];
-            printf("Plain text: ");
-            fgets(plain, MAX_LIMIT, stdin);
-
-
-            if(strcmp(cipher, "caesar") == 10){
-                int shift;
-                printf("Number of shifts for caesar's cipher: ");
-                scanf("%d/n", &shift);
+            do
+            {
+                printf("Choose a cipher!\n");
+                printf("Type: \n 'caesar' for caesars's cipher \n 'vignere' for vigenere cipher \n or 'q' to quit \n");
                 
-                printf("Encrypted text: %s\n", caesar(plain, shift));
-                printf("\n");
-            }
-            else if(strcmp(cipher, "vigenere") == 10){
-                // get key word
-                char key[MAX_LIMIT];
-                printf("Key-Word: ");
-                fgets(key, MAX_LIMIT, stdin);
+                // choose cipher
+                char cipher[MAX_LIMIT];
+                printf("Cipher: ");
+                fgets(cipher, MAX_LIMIT, stdin);
                 
-                printf("Encrypted text: %s\n", vigenere(cipher, key));
-                printf("\n");
 
-            }
+                
+                if(strcmp(cipher, "q") == 10){
+                    printf("Go back to main menu\n");
+                    break;
+                }
+                else if(strcmp(cipher, "caesar") == 10){
+                    // prompt for to be encrypted word
+                    char plain[MAX_LIMIT];
+                    printf("Plain text: ");
+                    fgets(plain, MAX_LIMIT, stdin);
+
+
+                    int shift;
+                    printf("Number of shifts for caesar's cipher: ");
+                    scanf("%d/n", &shift);
+                    
+                    printf("Encrypted text: %s\n", caesar(plain, shift));
+                    printf("\n");
+                    break;
+                }
+                else if(strcmp(cipher, "vigenere") == 10){
+                    // prompt for to be encrypted word
+                    char plain[MAX_LIMIT];
+                    printf("Plain text: ");
+                    fgets(plain, MAX_LIMIT, stdin);
+
+
+                    // get key word
+                    char key[MAX_LIMIT];
+                    printf("Key-Word: ");
+                    fgets(key, MAX_LIMIT, stdin);
+                    
+                    printf("Encrypted text: %s\n", vigenere(cipher, key));
+                    printf("\n");
+                    break;
+                }
+
+            } while (true);
+            
+            
 
             
         }
